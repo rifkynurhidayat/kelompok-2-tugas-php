@@ -11,8 +11,8 @@
 <body>
     <div class="container">
         <h3 class="fw-bold mt-4 mb-4">Tambah data</h3>
-        <form action="proses.php" method="POST">
-            <table class="table table-striped" id="form-pengarang">
+        <form action="proses.php" method="POST"  id="form-pengarang">
+            <table class="table table-striped">
                 <tr>
                     <td>Id</td>
                     <td><input type="text" name="id_pengarang" id="input-id">
