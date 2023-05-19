@@ -15,32 +15,32 @@
             <table class="table table-striped">
                 <tr>
                     <td>Id</td>
-                    <td><input type="text" name="id_pengarang" id="input-id">
+                    <td><input type="text" name="id_pengarang" id="id_pengarang">
                     <p id="id"></p>
                     </td>
                 </tr>
                 <tr>
                     <td>Nama pengarang</td>
-                    <td><input type="text" name="nama_pengarang" id="input-nama">
+                    <td><input type="text" name="nama_pengarang" id="nama_pengarang">
                     <p id="nama"></p>
                     </td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="email" id="input-email">
-                    <p id="email"></p>
+                    <td><input type="text" name="email" id="email">
+                    <p id="email-warning"></p>
                     </td>
                 </tr>
                 <tr>
                     <td>Telpon</td>
-                    <td><input type="number" name="telp" id="input-telepon">
-                    <p id="telp"></p>
+                    <td><input type="number" name="telp" id="telp">
+                    <p id="telp-warning"></p>
                     </td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td><input type="text" name="alamat" id="input-alamat">
-                    <p id="alamat"></p>
+                    <td><input type="text" name="alamat" id="alamat">
+                    <p id="alamat-warning"></p>
                     </td>
                 </tr>
             </table>
@@ -54,42 +54,73 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#my-button').click(function(event) {
-                if ($('#input-id').val().length == 0){
-                    $('#input-id' === '') 
+                if ($('#id_pengarang').val().length == 0){
+                    $('#id_pengarang' === '') 
                     $('#id').show().text('isi id dahulu');
-                     $('#input-id').css({"backgroundColor" : "red"});
-                } else if('#input-id' !== '' && '#id' !== ''){
+                     $('#id_pengarang').css({"backgroundColor" : "red"});
+                } else if('#id_pengarang' !== '' && '#id' !== ''){
                     $('#id').hide();
+                    $('#id_pengarang').css('background-color', '');
                 }
-                if  ($('#input-nama').val().length == 0){
-                    $('#input-nama' === '')
+                if  ($('#nama_pengarang').val().length == 0){
+                    $('#nama_pengarang' === '')
                     $('#nama').show().text('isi nama dahulu');
-                    $('#input-nama').css({"backgroundColor" : "red"});
-                }else if ('#input-nama' !== '' && '#nama' !== ''){
+                    $('#nama_pengarang').css({"backgroundColor" : "red"});
+                }else if ('#nama_pengarang' !== '' && '#nama' !== ''){
                     $('#nama').hide();
+                    $('#nama_pengarang').css('background-color', '');
                 }
-                if ($('#input-email').val().length == 0){
-                    $('#input-email' == '')
-                    $('#email').show().text('isi email dahulu');
-                    $('#input-email').css({"backgroundColor" : "red"});
-                } else if('#input-email' !== '' && '#email' !== ''){
-                    $('#email').hide();
+                if ($('#email').val().length == 0){
+                    $('#email' == '')
+                    $('#email-warning').show().text('isi email dahulu');
+                    $('#email').css({"backgroundColor" : "red"});
+                } else if('#email' !== '' && '#email-warning' !== ''){
+                    $('#email-warning').hide();
+                    $('#email').css('background-color','');
                 } 
-                if ($('#input-telepon').val().length == 0){
-                    $('#input-telepon' == '')
-                   $('#telp').show().text('isi nomer telepon dahulu');
-                } else if('#input-telepon' !== '' && '#telp' !== ''){
-                    $('#telp').hide();
+                if ($('#telp').val().length == 0){
+                    $('#telp' == '')
+                   $('#telp-warning').show().text('isi nomer telepon dahulu');
+                   $('#telp').css({"backgroundColor" : "red"});
+                } else if('#telp' !== '' && '#telp-warning' !== ''){
+                    $('#telp-warning').hide();
+                    $('#telp').css('background-color', '');
                 }
-                if ($('#input-alamat').val().length == 0){
-                    $('#input-alamat' == '')
-                    $('#alamat').show().text('isi alamat dahulu');
-                    $('#input-alamat').css({"backgroundColor" : "red"});
-                }else if('#input-alamat' !== '' && '#alamat' !== ''){
-                    $('#alamat').hide();
+                if ($('#alamat').val().length == 0){
+                    $('#alamat' == '')
+                    $('#alamat-warning').show().text('isi alamat dahulu');
+                    $('#alamat').css({"backgroundColor" : "red"});
+                }else if('#alamat' !== '' && '#alamat-warning' !== ''){
+                    $('#alamat-warning').hide();
+                    $('#alamat').css('background-color','');
                 } else{
                     $('#form-pengarang').submit();
-                }    
+                } 
+                var id = $('#id_pengarang').val();
+                var nama = $('#nama_pengarang').val();;
+                var email = $('#email').val();;
+                var telepon = $('#telp').val();;
+                var alamat = $('#alamat').val();;
+                
+                var data = {
+                    id:id,
+                    nama:nama,
+                    email:email,
+                    telepon:telepon,
+                    alamat:alamat
+                };
+
+                $.ajax ({
+                    url: 'proses.php',
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error:function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
         });
     });
 </script>
