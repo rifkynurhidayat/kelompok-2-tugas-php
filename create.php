@@ -43,11 +43,10 @@
                     <p id="alamat"></p>
                     </td>
                 </tr>
-                <td> 
-                    <button id="my-button" type="button" name="submit" class="btn btn-primary mt-4 mb-4">Submit</button>
-                </td>
-                <td id="warning"></td>
             </table>
+            <td>
+                <button id="my-button" type="button" name="submit" class="btn btn-primary mt-4 mb-4">Submit</button>
+            </td>
         </form>
     </div>
 </body>
