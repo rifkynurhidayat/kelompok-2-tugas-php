@@ -50,4 +50,3 @@
         $('#Table').DataTable();
     } );
 </script>
-
